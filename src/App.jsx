@@ -5,7 +5,6 @@ import Playlist from "./Components/playlist";
 import Player from './Components/Player.jsx'
 import './index.scss'
 import Layout from './Layout/Layout.jsx'
-import Header from "./Components/Header.jsx";
 
 function App() {
 	const [tracks, setTracks] = useState([])
