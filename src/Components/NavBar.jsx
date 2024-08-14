@@ -1,18 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
   return (
 <nav className="mainLeftBlock">
             <div className="box">
                 <div className="top">
-                    <div className="active">
+                    <Link  to='/' className="active links">
                         <img src="../../Home_Fill_S.svg" alt="" />
                         <span>Home</span>
-                    </div>
-                    <div>
+                    </Link>
+                    <Link className='links' to='/search'>
                         <img src="../../Search_S.svg" alt="" />
                         <span>Search</span>
-                    </div>
+                    </Link>
                     <div>
                         <img src="../../Library_S.svg" alt="" />
                         <span>Library</span>
