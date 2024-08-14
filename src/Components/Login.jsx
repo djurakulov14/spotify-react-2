@@ -3,7 +3,7 @@ import spotify from '../Contexts/spotifyContext';
 
 
 const Login = () => {
-    const {CLIENT_ID,REDIRECT_URI,CLIENT_SECRET,AUTH_ENDPOINT,RESPONSE_TYPE} = useContext(spotify)
+    const {CLIENT_ID,REDIRECT_URI,AUTH_ENDPOINT,RESPONSE_TYPE} = useContext(spotify)
 
     return (
         <div className='login-page'>
