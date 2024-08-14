@@ -5,10 +5,12 @@ import Playlist from "./Components/playlist";
 import Player from './Components/Player.jsx'
 import './index.scss'
 import Layout from './Layout/Layout.jsx'
+import Header from "./Components/Header.jsx";
 
 function App() {
 	const [tracks, setTracks] = useState([])
 	const [More, setMore] = useState(false)
+	const [user, setUser] = useState({})
   const arrey = [
     {
       id: 1,
@@ -390,7 +392,6 @@ function App() {
   return (
     <>
 	<Layout>
-
 <Player setTracks={setTracks} tracks={tracks}/>
       <div className="container">
         <div className="album_block">
@@ -400,7 +401,7 @@ function App() {
 					  <div key={genre.id} className="genreSection">
                     <Genres key={genre.id} genre={genre} toggleShowMore={toggleShowMore} More={More}/>
                       <div className="albumMix">
-                        {genre.data.slice(0, More ? 8 : 5).map(dat => (
+                        {genre.data.slice(0, More ? 8 : 4).map(dat => (
 							<Playlist key={dat.id} dat={dat} />
                         ))}
                       </div>
