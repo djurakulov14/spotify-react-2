@@ -1,12 +1,12 @@
 import NavBar from "../Components/NavBar";
 import {Outlet} from 'react-router-dom'
-import Player from "../Components/Player";
 import Header from "../Components/Header";
 import { useEffect, useState } from "react";
 import Login from "../Components/Login";
 import { useHttp } from '../Hooks/http.hook.js'
 import TOKEN from "../Contexts/token.js";
 import RightAside from "../Components/RightAside.jsx";
+import Player from "../Components/Player.jsx";
 
 
 function Layout() {

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./App.css";
 
 import './index.scss'
@@ -9,8 +8,6 @@ import Search from "./Pages/Search.jsx";
 import Playlist from "./Pages/Playlist.jsx";
 
 function App() {
-	
-
 
   return (
     <>
