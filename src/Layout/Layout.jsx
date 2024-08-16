@@ -1,6 +1,5 @@
 import NavBar from "../Components/NavBar";
 import {Outlet} from 'react-router-dom'
-import Player from "../Components/Player";
 import Header from "../Components/Header";
 import { useEffect, useState } from "react";
 import Login from "../Components/Login";
