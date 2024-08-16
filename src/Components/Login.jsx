@@ -8,8 +8,7 @@ const Login = () => {
     return (
         <div className='login-page'>
             <div className="logo-spotify">
-                <img src="/img/spotify-logo.svg" className='logo-img' />
-                <h1></h1>
+                <h1 className=' text-7xl'>LOG IN</h1>
             </div>
             <div className='redirect-block'>
             <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=playlist-modify-public`}>

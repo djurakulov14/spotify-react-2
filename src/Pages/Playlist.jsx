@@ -24,11 +24,12 @@ const Playlist = () => {
             })
         }
 
-        console.log(tracks);
-        console.log(album);
 
         
     }, []);
+
+    console.log(state);
+    
 
   return (
     <div>
