@@ -4,6 +4,7 @@
     height: fit-content;
     background-color: hsl(0, 1%, 17%);
     margin-left: 20%;
+    overflow-x: hidden;
 }
 
 .topBox {
@@ -12,8 +13,21 @@
     height: 310px;
     display: flex;
     align-items: end;
-    justify-content: space-around;
+    justify-content: start;
     padding-bottom: 20px;
+    max-width: 1700px;
+    margin: 0 auto;
+}
+
+.topBox2 {
+
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+    margin-right: 10px;
+
 }
 
 .coverBlock {
@@ -92,189 +106,261 @@ b:hover {
 }
 
 
+.topMenu {
+
+    width: 100%;
+    height: 80px;
+    background-color: #121212;
+    padding-top: 35px;
+    max-width: 1700px;
+    margin: 0 auto;
+}
+
+.topMenu2 {
+
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+
+
+}
+
+.play_dotes_box {
+
+    width: 115px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 12px;
+
+}
+
+.playButton {
+
+    width: 60px;
+    height: 60px;
+    background-color: rgb(79, 223, 79);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playButton:hover {
+
+    
+    background-color: rgb(93, 234, 93);
+    transform: scale(1.05);
+ 
+}
+
+.dotesButton {
+
+    width: fit-content;
+    height: fit-content;
+
+}
+
+.play_img {
+
+    width: 40px;
+    height: 40px;
+    margin-left: 4px;
+}
+
+.dotes_img {
+
+    width: 34px;
+    height: 34px;
+    opacity: 0.6;
+}
+
+.dotes_img:hover {
+
+    opacity: 1;
+}
+
+
+.listType_box{
+
+    width: 80px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    color: white;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.listType_box:hover {
+
+    opacity: 1;
+}
+
+
+.list_img {
+
+    width: 25px;
+    height: 25px;
+}
+
+
+.addedTrack_button {
+
+    width: 15.5px;
+    height: 15.5px;
+    background-color: rgb(79, 223, 79);
+    border-radius: 50%;
+    margin-right: 10px;
+    
+}
+
+.trackOption_button {
+
+    width: 20px;
+    height: 10px;
+ 
+    margin-bottom: 8px;
+}
+
+.trackPlay_icon {
+
+    filter: invert(1);
+    cursor: pointer;
+    height: 30px;
+}
+
 
 /* Table */
 
 .tableContainer {
-    width: 100%;
-    margin-top: 20px;
-    padding: 0 20px;
-    background-color: #121212; 
-    display: flex;
-    justify-content: center;
+    background-color: #121212;
+    color: white;
+    padding: 20px;
+    padding-top: 0;
+    max-width: 1700px;
+    margin: 0 auto;
 }
 
 .table {
+    width: 96.5%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-left: 3.5%;
+    padding-top: 15px;
     
-    width: 92%;
-    color: #ffffff;
-    font-size: 14px;
-    border-collapse: separate; 
-    border-spacing: 0 15px; 
-
 }
-
 
 
 
 .th, .td {
-
-    padding: 10px 0;
+    padding: 10px;
     text-align: left;
-    color: #b3b3b3;
+    font-size: 14px;
+    font-weight: normal;
+    border-bottom: 1px solid #282828;
 }
-
 
 .th {
-    
+    color: #b3b3b3;
     text-transform: uppercase;
-    font-weight: 400;
     font-size: 12px;
-    border-bottom: 1px solid #282828;
-   
+    letter-spacing: 1px;
+}
+
+.trBox .tr {
+    height: 60px; 
+
 }
 
 
+.thHash {
 
-.tr {
+    font-size: 18px;
+    color: #b3b3b3;
 
-    height: 50px; 
+}
+.trBox .tr:hover {
+    background-color: #282828;
 }
 
-.tr:hover {
-    background-color: #282828; 
-}
 
 .trackNumber {
-    width: 5%;
-    color: #b3b3b3;
+    width: 20px;
+    text-align: center;
 }
 
 .trackTitle {
-    width: 40%; 
     display: flex;
     align-items: center;
-    color: #ffffff;
-}
-
-.trackTitleTxt {
-
-    font-size: 16px;
-}
-
-.trackTitleTxt:hover {
-
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.artistTxt {
-
-    font-size: 13px;
-    color: rgb(197, 195, 195);
-}
-
-.artistTxt:hover {
-
-    text-decoration: underline;
-    cursor: pointer;
-    color: white;
-}
-
-.trackAlbum {
-
-    width: 30%;
-    color: #b3b3b3;
-    
-}
-
-.trackAlbum:hover {
-
-    text-decoration: underline;
-    color: white;
-    cursor: pointer;
-}
-
-.trackTime, .trackDuration {
-    width: 12.5%; 
-    text-align: right;
-    color: #b3b3b3;
-}
-
-.explicit {
-    background-color: #535353;
-    padding: 2px 4px;
-    font-size: 10px;
-    border-radius: 2px;
-    color: #ffffff;
-    margin-right: 5px;
-}
-
-.trackName {
-    display: flex;
-    align-items: center;
-    width: 600px;
+    margin-top: 7px;
 }
 
 .albumCover {
     width: 40px;
     height: 40px;
     margin-right: 15px;
-    border-radius: 4px;
-    margin-top: 5.5px;
 }
 
-.playlistHeader {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    background-color: #1e1e1e;
-}
-
-.playlistTitle {
-    color: #ffffff;
-    font-size: 48px; 
-    font-weight: bold;
-  
-}
-
-.playlistMeta {
-    color: #b3b3b3;
-    font-size: 16px; 
-    margin-top: 5px;
-}
-
-.tableContainer {
-    margin-top: 30px;
-}
-
-.playlistMeta {
+.trackTitleTxt {
     font-size: 16px;
+    color: white;  
+}
+
+.artistTxt {
     color: #b3b3b3;
-    margin-top: 10px;
+    font-size: 14px;
 }
 
-.trackInfo {
-    display: flex;
-    align-items: center;
+.explicit {
+    background-color: #9e9e9e;
+    border-radius: 2px;
+    color: #000;
+    font-size: 9px;
+    margin-left: 2px;
+    display: inline-block;
+    margin-right: 6px;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+}
+
+.trackAlbum, .trackTime {
+
     color: #b3b3b3;
+    font-size: 14px;
 }
 
-.trackInfo div {
-    display: flex;
-    flex-direction: column;
+.trackDurationBox {
+
+    color: #b3b3b3;
+    font-size: 14px;
+ 
 }
 
-.trackInfo span:first-child {
-    color: #ffffff;
-    font-weight: bold;
-}
 
 .clock_img {
-
-    width: 24px;
-    height: 24px;
-    margin-left: 90px;
-    opacity: 0.7;
+    width: 22px;
+    height: 22px;
+    filter: invert(50%);
 }
+
+.trackName {
+    display: flex;
+    margin-left: 12px;
+    align-items: center;
+}
+
+.artist_E_box {
+
+    display: flex;
+    align-items: center;
+}
+
 

@@ -1,29 +1,44 @@
 import style from '../style/Playlist.module.css';
 
-export default function Playlist_track({ track, num }) {
-    return (
-        <tr className={style.tr}>
+import play_img from '../images/playlist_images/play-regular-36.png';
 
-            <td className={style.trackNumber}>{num + 1}</td>
+import { useState } from 'react';
+
+export default function Playlist_track({ track, num }) {
+    const [entered, setEntered] = useState(false);
+
+    return (
+        <tr
+            className={style.tr}
+            onMouseEnter={() => setEntered(true)}
+            onMouseLeave={() => setEntered(false)}
+        >
+            <td className={style.trackNumber}>
+                {!entered ? num + 1 : <img className={style.trackPlay_icon} src={play_img} alt="Play Icon" />}
+            </td>
 
             <td className={style.trackTitle}>
 
                 <div className={style.trackName}>
 
                     <img src={track.cover} alt={track.title} className={style.albumCover} />
+                    <div className={style.textBox}>
 
-                    <div>
                         <span className={style.trackTitleTxt}>{track.title}</span> <br />
-                        {track.explicit && <span className={style.explicit}>E</span>}
-                        <span className={style.artistTxt}>{track.artist}</span>
-                    </div>
+                        <div className={style.artist_E_box}>
 
+                            {track.explicit && <span className={style.explicit}>E</span>}
+                            <span className={style.artistTxt}>{track.artist}</span>
+
+                        </div>
+
+                    </div>
                 </div>
             </td>
 
             <td className={style.trackAlbum}>{track.album}</td>
             <td className={style.trackTime}>{track.added}</td>
-            <td className={style.trackDuration}>{track.duration}</td>
+            <td className={style.trackDurationBox}>{track.duration}</td>
         </tr>
     );
 }
