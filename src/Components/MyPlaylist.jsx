@@ -20,7 +20,7 @@ const MyPlaylist = ({ id, images, name, tracks }) => {
 				alt=""
 			/>
 			<div className="px-[21px] py-{28px} flex items-center justify-center ">
-				<p className="font-bold text-3xl max-sm:text-sm text-white truncate capitalize">
+				<p className="font-bold text-xl max-sm:text-sm text-white truncate capitalize">
 					{name}
 				</p>
 			</div>

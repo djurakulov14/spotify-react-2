@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import TOKEN from '../Contexts/token';
 import { useHttp } from '../Hooks/http.hook';
 import MyPlaylist from '../Components/MyPlaylist';
+import PlaylistList from '../Containers/Playlistlist';
 
 
 const Home = () => {
@@ -57,6 +58,7 @@ const Home = () => {
 			}
 		).then(res => {
 			setPlayslits(res?.playlists?.items)
+			
 		})
 		request(`https://api.spotify.com/v1/browse/new-releases?country=UZ&limit=20&offset=5`, 
 			"GET",
@@ -72,17 +74,18 @@ const Home = () => {
 
   return (
 
-    <div className='absolute top-[80px] text-white p-[40px] right-0 w-[80%] h-full bg-gradient-to-b from-[#3333A3] to-[#121212] '>
+    <div className='m-auto rounded-xl mt-[80px] min-h-screen text-white p-[40px] w-[60%] bg-gradient-to-b from-[#444444] to-[#121212] '>
         <div className="greeting mb-[30px]">
-            <span className=' font-bold text-7xl'>Good {greeting}</span>
+            <span className=' font-bold text-5xl'>Good {greeting}</span>
         </div>
-        <div className="2xl:grid-cols-3 max-sm:grid-cols-2 grid grid-cols-2 gap-4 max-sm:gap-2 ">
+        <div className="2xl:grid-cols-3 grid grid-cols-2 gap-4 max-sm:gap-2 max-lg:grid-cols-1 ">
 			{
 				myPlaslists.map((item) => (
 					<MyPlaylist key={item.id} {...item} />
 				))
 			}
 		</div>
+		<PlaylistList type={'songs'} errorMsg={errorMsg} plaslists={plaslists} title={"Made for you"} />
     </div>
   )
 }

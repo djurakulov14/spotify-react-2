@@ -1,9 +1,13 @@
+
 import style from '../style/Playlist.module.css';
 import CoverBlock from '../Components/Playlist_coverBlock';
 import Playlist_table from '../Components/Playlist_table';
 import play_img from '../images/playlist_images/play-regular-36.png';   
 import dotes_img from '../images/playlist_images/dots-horizontal-rounded-regular-36.png';
 import list_img from '../images/playlist_images/list-ul-regular-36.png';
+import style from '../style/Playlist.module.css'
+import CoverBlock from '../Components/Playlist_coverBlock'
+import Playlist_table from '../Components/Playlist_table'
 
 import { useEffect, useState } from 'react';
 
@@ -129,3 +133,5 @@ const Playlist = () => {
 };
 
 export default Playlist;
+
+
