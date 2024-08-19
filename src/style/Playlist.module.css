@@ -1,3 +1,10 @@
+body {
+
+    background-color: #121212;
+
+}
+
+
 .mainBlock {
 
     width: 80%;
@@ -6,7 +13,6 @@
     margin-left: 20%;
     overflow-x: hidden;
 }
-
 .topBox {
 
     width: 100%;
