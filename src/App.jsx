@@ -1,358 +1,128 @@
-import { useState } from "react";
 import "./App.css";
-import Genres from "./Components/Genres";
-import Playlist from "./Components/playlist";
+import All from "./Components/genreBlock";
 
 function App() {
-  const [More, setMore] = useState(false)
   const arrey = [
     {
       id: 1,
-      genre: "Your top mixes",
-      data: [
-        {
-          id: 1,
-          img: "/album/ChillMix.png",
-          title: "Chill Mix",
-          txt: "Julia Wolf, Khalid, ayokay and more",
-        },
-        {
-          id: 2,
-          img: "/album/PopMix.png",
-          title: "Pop Mix",
-          txt: "Hey Violet, VÉRITÉ, Timeflies and more",
-        },
-        {
-          id: 3,
-          img: "/album/PheelzMix.png",
-          title: "Pheelz Mix",
-          txt: "WizKid, Asake, Tiwa Savage and more",
-        },
-        {
-          id: 4,
-          img: "/album/IndieMix.png",
-          title: "Indie Mix",
-          txt: "Joywave, The xx, The Neighbourhood and...",
-        },
-        {
-          id: 5,
-          img: "/album/ChillMix.png",
-          title: "Chill Mix",
-          txt: "Julia Wolf, Khalid, ayokay and more",
-        },
-        {
-          id: 6,
-          img: "/album/PopMix.png",
-          title: "Pop Mix",
-          txt: "Hey Violet, VÉRITÉ, Timeflies and more",
-        },
-        {
-          id: 7,
-          img: "/album/PheelzMix.png",
-          title: "Pheelz Mix",
-          txt: "WizKid, Asake, Tiwa Savage and more",
-        },
-        {
-          id: 8,
-          img: "/album/IndieMix.png",
-          title: "Indie Mix",
-          txt: "Joywave, The xx, The Neighbourhood and...",
-        },
-      ],
+      img: "/album/ChillMix.png",
+      genre: "Музыка",
     },
     {
       id: 2,
-      genre: "Made for you",
-      data: [
-        {
-          id: 1,
-          img: "/album/ChillMix.png",
-          title: "Chill Mix",
-          txt: "Julia Wolf, Khalid, ayokay and more",
-        },
-        {
-          id: 2,
-          img: "/album/PopMix.png",
-          title: "Pop Mix",
-          txt: "Hey Violet, VÉRITÉ, Timeflies and more",
-        },
-        {
-          id: 3,
-          img: "/album/PheelzMix.png",
-          title: "Pheelz Mix",
-          txt: "WizKid, Asake, Tiwa Savage and more",
-        },
-        {
-          id: 4,
-          img: "/album/IndieMix.png",
-          title: "Indie Mix",
-          txt: "Joywave, The xx, The Neighbourhood and...",
-        },
-        {
-          id: 5,
-          img: "/album/ChillMix.png",
-          title: "Chill Mix",
-          txt: "Julia Wolf, Khalid, ayokay and more",
-        },
-        {
-          id: 6,
-          img: "/album/PopMix.png",
-          title: "Pop Mix",
-          txt: "Hey Violet, VÉRITÉ, Timeflies and more",
-        },
-        {
-          id: 7,
-          img: "/album/PheelzMix.png",
-          title: "Pheelz Mix",
-          txt: "WizKid, Asake, Tiwa Savage and more",
-        },
-        {
-          id: 8,
-          img: "/album/IndieMix.png",
-          title: "Indie Mix",
-          txt: "Joywave, The xx, The Neighbourhood and...",
-        },
-      ],
+      img: "/album/IndieMix.png",
+      genre: "Подкасты",
     },
     {
       id: 3,
-      genre: "Recently played",
-      data: [
-        {
-          id: 1,
-          img: "/album/ChillMix.png",
-          title: "Chill Mix",
-          txt: "Julia Wolf, Khalid, ayokay and more",
-        },
-        {
-          id: 2,
-          img: "/album/PopMix.png",
-          title: "Pop Mix",
-          txt: "Hey Violet, VÉRITÉ, Timeflies and more",
-        },
-        {
-          id: 3,
-          img: "/album/PheelzMix.png",
-          title: "Pheelz Mix",
-          txt: "WizKid, Asake, Tiwa Savage and more",
-        },
-        {
-          id: 4,
-          img: "/album/IndieMix.png",
-          title: "Indie Mix",
-          txt: "Joywave, The xx, The Neighbourhood and...",
-        },
-        {
-          id: 5,
-          img: "/album/ChillMix.png",
-          title: "Chill Mix",
-          txt: "Julia Wolf, Khalid, ayokay and more",
-        },
-        {
-          id: 6,
-          img: "/album/PopMix.png",
-          title: "Pop Mix",
-          txt: "Hey Violet, VÉRITÉ, Timeflies and more",
-        },
-        {
-          id: 7,
-          img: "/album/PheelzMix.png",
-          title: "Pheelz Mix",
-          txt: "WizKid, Asake, Tiwa Savage and more",
-        },
-        {
-          id: 8,
-          img: "/album/IndieMix.png",
-          title: "Indie Mix",
-          txt: "Joywave, The xx, The Neighbourhood and...",
-        },
-      ],
+      img: "/album/PheelzMix.png",
+      genre: "Мероприятие",
     },
     {
       id: 4,
-      genre: "Jump back in",
-      data: [
-        {
-          id: 1,
-          img: "/album/ChillMix.png",
-          title: "Chill Mix",
-          txt: "Julia Wolf, Khalid, ayokay and more",
-        },
-        {
-          id: 2,
-          img: "/album/PopMix.png",
-          title: "Pop Mix",
-          txt: "Hey Violet, VÉRITÉ, Timeflies and more",
-        },
-        {
-          id: 3,
-          img: "/album/PheelzMix.png",
-          title: "Pheelz Mix",
-          txt: "WizKid, Asake, Tiwa Savage and more",
-        },
-        {
-          id: 4,
-          img: "/album/IndieMix.png",
-          title: "Indie Mix",
-          txt: "Joywave, The xx, The Neighbourhood and...",
-        },
-        {
-          id: 5,
-          img: "/album/ChillMix.png",
-          title: "Chill Mix",
-          txt: "Julia Wolf, Khalid, ayokay and more",
-        },
-        {
-          id: 6,
-          img: "/album/PopMix.png",
-          title: "Pop Mix",
-          txt: "Hey Violet, VÉRITÉ, Timeflies and more",
-        },
-        {
-          id: 7,
-          img: "/album/PheelzMix.png",
-          title: "Pheelz Mix",
-          txt: "WizKid, Asake, Tiwa Savage and more",
-        },
-        {
-          id: 8,
-          img: "/album/IndieMix.png",
-          title: "Indie Mix",
-          txt: "Joywave, The xx, The Neighbourhood and...",
-        },
-      ],
+      img: "/album/PopMix.png",
+      genre: "Для тебя",
     },
     {
       id: 5,
-      genre: "Uniquely yours",
-      data: [
-        {
-          id: 1,
-          img: "/album/ChillMix.png",
-          title: "Chill Mix",
-          txt: "Julia Wolf, Khalid, ayokay and more",
-        },
-        {
-          id: 2,
-          img: "/album/PopMix.png",
-          title: "Pop Mix",
-          txt: "Hey Violet, VÉRITÉ, Timeflies and more",
-        },
-        {
-          id: 3,
-          img: "/album/PheelzMix.png",
-          title: "Pheelz Mix",
-          txt: "WizKid, Asake, Tiwa Savage and more",
-        },
-        {
-          id: 4,
-          img: "/album/IndieMix.png",
-          title: "Indie Mix",
-          txt: "Joywave, The xx, The Neighbourhood and...",
-        },
-        {
-          id: 5,
-          img: "/album/ChillMix.png",
-          title: "Chill Mix",
-          txt: "Julia Wolf, Khalid, ayokay and more",
-        },
-        {
-          id: 6,
-          img: "/album/PopMix.png",
-          title: "Pop Mix",
-          txt: "Hey Violet, VÉRITÉ, Timeflies and more",
-        },
-        {
-          id: 7,
-          img: "/album/PheelzMix.png",
-          title: "Pheelz Mix",
-          txt: "WizKid, Asake, Tiwa Savage and more",
-        },
-        {
-          id: 8,
-          img: "/album/IndieMix.png",
-          title: "Indie Mix",
-          txt: "Joywave, The xx, The Neighbourhood and...",
-        },
-      ],
+      img: "/album/ChillMix.png",
+      genre: "Новые релизы",
     },
     {
       id: 6,
-      genre: "Just the hits",
-      data: [
-        {
-          id: 1,
-          img: "/album/ChillMix.png",
-          title: "Chill Mix",
-          txt: "Julia Wolf, Khalid, ayokay and more",
-        },
-        {
-          id: 2,
-          img: "/album/PopMix.png",
-          title: "Pop Mix",
-          txt: "Hey Violet, VÉRITÉ, Timeflies and more",
-        },
-        {
-          id: 3,
-          img: "/album/PheelzMix.png",
-          title: "Pheelz Mix",
-          txt: "WizKid, Asake, Tiwa Savage and more",
-        },
-        {
-          id: 4,
-          img: "/album/IndieMix.png",
-          title: "Indie Mix",
-          txt: "Joywave, The xx, The Neighbourhood and...",
-        },
-        {
-          id: 5,
-          img: "/album/ChillMix.png",
-          title: "Chill Mix",
-          txt: "Julia Wolf, Khalid, ayokay and more",
-        },
-        {
-          id: 6,
-          img: "/album/PopMix.png",
-          title: "Pop Mix",
-          txt: "Hey Violet, VÉRITÉ, Timeflies and more",
-        },
-        {
-          id: 7,
-          img: "/album/PheelzMix.png",
-          title: "Pheelz Mix",
-          txt: "WizKid, Asake, Tiwa Savage and more",
-        },
-        {
-          id: 8,
-          img: "/album/IndieMix.png",
-          title: "Indie Mix",
-          txt: "Joywave, The xx, The Neighbourhood and...",
-        },
-      ],
+      img: "/album/IndieMix.png",
+      genre: "Поп",
+    },
+    {
+      id: 7,
+      img: "/album/PheelzMix.png",
+      genre: "Хип-Хоп",
+    },
+    {
+      id: 8,
+      img: "/album/PopMix.png",
+      genre: "Настроение",
+    },
+    {
+      id: 9,
+      img: "/album/ChillMix.png",
+      genre: "Dance",
+    },
+    {
+      id: 10,
+      img: "/album/IndieMix.png",
+      genre: "Чарты подкастов",
+    },
+    {
+      id: 11,
+      img: "/album/ChillMix.png",
+      genre: "Музыка",
+    },
+    {
+      id: 12,
+      img: "/album/IndieMix.png",
+      genre: "Подкасты",
+    },
+    {
+      id: 13,
+      img: "/album/PheelzMix.png",
+      genre: "Мероприятие",
+    },
+    {
+      id: 14,
+      img: "/album/PopMix.png",
+      genre: "Для тебя",
+    },
+    {
+      id: 15,
+      img: "/album/ChillMix.png",
+      genre: "Новые релизы",
+    },
+    {
+      id: 16,
+      img: "/album/IndieMix.png",
+      genre: "Поп",
+    },
+    {
+      id: 17,
+      img: "/album/PheelzMix.png",
+      genre: "Хип-Хоп",
+    },
+    {
+      id: 18,
+      img: "/album/PopMix.png",
+      genre: "Настроение",
     },
   ];
-
-  const toggleShowMore = () => {
-    setMore(More => !More);
-  };
 
   return (
     <>
       <div className="container">
-        <div className="album_block">
-          <div className="generList">
-              {
-                arrey.map(genre => (
-                  <div key={genre.id} className="genreSection">
-                    <Genres key={genre.id} genre={genre} toggleShowMore={toggleShowMore} More={More}/>
-                      <div className="albumMix">
-                        {genre.data.slice(0, More ? 8 : 4).map(dat => (
-                        <Playlist key={dat.id} dat={dat} />
-                        ))}
-                      </div>
-                  </div>
-                ))    
-              }
+        <div className="fixed">
+          <div className="search_block">
+            <div className="left">
+              <div className="arrow">
+                <img src="/icon/left.png" alt="" />
+                <img src="/icon/right.png" alt="" />
+              </div>
+              <form>
+                <input type="text" placeholder="Что хочешь включить ?" />
+                <img src="/icon/search.png" alt="" />
+              </form>
+            </div>
+            <div className="right">
+              <img src="/icon/user.png" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div className="all_block">
+          <h1>Все остальное</h1>
+
+          <div className="block">
+            {arrey.map((genre) => (
+              <All genre={genre} />
+            ))}
           </div>
         </div>
       </div>
