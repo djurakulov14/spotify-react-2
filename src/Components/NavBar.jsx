@@ -42,7 +42,7 @@ const NavBar = ({navPlaylists}) => {
                 {/* <GoSearch/> */}
                 <div className="playlists flex flex-col gap-3">
                     {
-                        navPlaylists.map(item => <NavPlaylist {...item} />)
+                        navPlaylists.map(item => <NavPlaylist key={item.id} {...item} />)
                     }
                 </div>
             </div>

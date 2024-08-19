@@ -11,68 +11,46 @@ import { HiOutlineQueueList } from 'react-icons/hi2';
 import { TbDevices2 } from 'react-icons/tb';
 import { TbVolume } from 'react-icons/tb';
 import { MdOpenInFull } from 'react-icons/md';
+import currentTrack from "../Contexts/currentTrack.js";
 
 
-const Player = ({curTrack}) => {
+
+const Player = () => {
+    const {track, changeTrack} = useContext(currentTrack)
+
 
     const [image, setImage] = useState(false)
     const [pause, setPause] = useState(false)
-    const [currentTrack, setCurrentTrack] = useState({})
-    const [like, setLike] = useState(currentTrack?.isLiked)
+    const [playingTrack, setPlayingTrack] = useState({})
+    const [like, setLike] = useState(playingTrack?.isLiked)
+    const [local, setLocal] = useState(JSON.parse(localStorage.getItem('lastTrack')))
 
-    useEffect(() => {
-        setCurrentTrack(curTrack)    
-        console.log( currentTrack);
-    }, [curTrack])
-
-    const nextTrack = () => {
-        // if(trackId === 40) {
-        //     setTrackId(1)
-        // } else {
-        //     setTrackId(trackId + 1)
-        // }
-    }
-
-    const previousTrack = () => {
-        // if(trackId === 1) {
-        //     setTrackId(40)
-        // } else {
-        //     setTrackId(trackId - 1)
-        // }
-        // console.log('helo');
-        
-    }
-
-
+    console.log(local);
     
-    const handleSong = () => {
-        setPause(!pause)
-    }
 
     useEffect(() => {
         const audio = document.querySelector('audio')
+        // pause ? audio.play() : audio.pause()
         if(pause) {
             audio.play()
+            changeTrack({...track, isPlaying: true})
         } else {
             audio.pause()
+            changeTrack({...track, isPlaying: false})
         }
 
     }, [pause])
 
-    // function width(e) {
-    //     const {duration, currentTime} = e.srcElement
-    //     const progresspercent = (currentTime / duration) * 100
-    //     audioLength.style.width = `${progresspercent}%`
-    //     let curr = Math.round(currentTime) <= 9 ? "0" + Math.round(currentTime) : Math.round(currentTime)
-    //     currTime.innerHTML = "0:" + curr
-    // }
+    const img = track?.album?.images[0]?.url || local?.album?.images[0]?.url ||  "https://i.scdn.co/image/ab67616d00001e020eb9240c0c5bbba4a0495587"
+    const artist = track?.album?.artists[0]?.name || local?.album?.artists[0]?.name
 
-    // function setProgress(e) {
-    //     const width = this.clientWidth
-    //     const clickX = e.offsetX
-    //     const duration = audio.duration
-    //     audio.currentTime = (clickX / width) * duration
-    // }
+    useEffect(() => {
+        setPause(track.isPlaying)
+    }, [track.isPlaying])
+
+    const handleSong = () => {
+        setPause(!pause)
+    }
 
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -106,28 +84,28 @@ const Player = ({curTrack}) => {
     return ( 
         <div className="fixed overflow-hidden bottom-0 left-0 bg-[#181818] h-fit w-full flex justify-between items-center p-4 z-[1000] max-lg:p-3 max-[500px]:p-1 max-lg:bottom-24 max-lg:ml-5 max-lg:w-11/12 max-lg:rounded-3xl max-lg:h-24 max-[500px]:h-20">
             <div className="left flex gap-2 items-center max-lg:gap-1">
-                {image ? <img src={currentTrack?.img} className="bigImg" onClick={() => setImage(!image)}/> : <img src={currentTrack?.img} className="w-20 rounded-xl max-lg:w-12 max-[500px]:w-10"  onClick={() => setImage(!image)}/>}           
+                {image ? <img src={img} className="bigImg" onClick={() => setImage(!image)}/> : <img src={img} className="w-20 rounded-xl max-lg:w-12 max-[500px]:w-10"  onClick={() => setImage(!image)}/>}           
                 <div className="flex text-white flex-col">
                     <p className="whitespace-nowrap w-fit max-w-52 overflow-hidden max-lg:text-sm max-[500px]:text-xs max-lg:w-40 max-lg:overflow-hidden max-[500px]:w-36 max-[500px]:overflow-hidden max-sm:w-32  max-sm:overflow-hidden">{currentTrack.track?.name}</p>
-                    <p className="text-gray-400 max-lg:text-sm max-[500px]:text-xs">{currentTrack?.track?.artists[0]?.name}</p>
+                    <p className="text-gray-400 max-lg:text-sm max-[500px]:text-xs">{artist}</p>
                 </div>
                 {like ? <AiFillHeart color="#63CF6C" size={25} className="ml-6 max-lg:ml-2" onClick={() => setLike(!like)}/> : <AiOutlineHeart className="ml-6" color="white" size={25} onClick={() => setLike(!like)}/> }
             </div>
             <div className="mid flex flex-col items-center">
                 <div className="top flex gap-2 items-center">
                     <TfiControlShuffle color="c4c4c4" size={30} className=" max-lg:hidden"/>
-                    <MdSkipPrevious color="c4c4c4" size={35} className=" max-lg:hidden" onClick={nextTrack}/>
+                    <MdSkipPrevious color="c4c4c4" size={35} className=" max-lg:hidden" onClick={"nextTrack"}/>
 
                     {pause ? <MdPauseCircle color="white" size={45} onClick={handleSong}/> : <MdPlayCircle color="white" size={45} onClick={handleSong}/> }
                     
-                    <MdSkipNext color="c4c4c4" size={35} className=" max-lg:hidden"  onClick={previousTrack}/>
+                    <MdSkipNext color="c4c4c4" size={35} className=" max-lg:hidden"  onClick={"previousTrack"}/>
                     <RiRepeat2Line color="c4c4c4" size={30} className=" max-lg:hidden"/>
                 </div>
                 <div className="bot">
                     {/* <audio src={currentTrack.track?.preview_url}  controls className="max-lg:absolute max-lg:bottom-0 left-0 max-lg:w-full max-lg:h-4"/> */}
                     <audio
                         ref={audioRef}
-                        src={currentTrack.track?.preview_url}
+                        src={track?.track?.preview_url}
                         onTimeUpdate={handleTimeUpdate}
                     />
 

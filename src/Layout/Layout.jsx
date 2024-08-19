@@ -1,3 +1,4 @@
+import currentTrack from "../Contexts/currentTrack.js";
 import NavBar from "../Components/NavBar";
 import {Outlet, useNavigate} from 'react-router-dom'
 import Header from "../Components/Header";
@@ -8,16 +9,21 @@ import TOKEN from "../Contexts/token.js";
 import RightAside from "../Components/RightAside.jsx";
 import Player from "../Components/Player.jsx";
 
-
 function Layout() {
 	const [user, setUser] = useState(null)
 	const [token, setToken] = useState();
 	const [track, setTrack] = useState([])
 	const [navPlaylists, setNavPlaylists] = useState([])
+	const [playingTrack, setPlayingTrack] = useState({
+		isPLaying: false,
+		track: "",
+	});
 	const {request} = useHttp()
 	const navigate = useNavigate("/login");
 
-
+	const changeTrack = (data) => {
+		setPlayingTrack(data);
+	};
 
 	useEffect(() => {
 		const hash = window.location.hash;
@@ -68,13 +74,15 @@ function Layout() {
 
     return (
       <>
-        <NavBar navPlaylists={navPlaylists}/>
-		<Header user={user}/>
-		<RightAside/>
-		<TOKEN.Provider value={token}>
-			<Outlet />
-		</TOKEN.Provider>
-		<Player curTrack={track}/>
+        <currentTrack.Provider value={{ track, changeTrack }}>
+			<NavBar navPlaylists={navPlaylists}/>
+			<Header user={user}/>
+			<RightAside/>
+			<TOKEN.Provider value={token}>
+				<Outlet />
+			</TOKEN.Provider>
+			<Player curTrack={track}/>
+		</currentTrack.Provider>
       </>
      );
 }

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const MyPlaylist = ({ id, images, name, tracks }) => {
@@ -6,12 +6,13 @@ const MyPlaylist = ({ id, images, name, tracks }) => {
 
 
 	const showPlaylist = () => {
-		navigate("/playlist/id=" + name, { state: {track: tracks.href, img: images[0]?.url} });
+		navigate("/playlist/id=" + id, { state: {track: tracks.href, img: images[0]?.url,  id: id} });
 	};
 
 	return (
-		<div
-			onClick={showPlaylist}
+		<Link
+			to={"/playlist/:id=" + id}
+			// onClick={showPlaylist}
 			className="flex rounded-md max-sm:rounded-sm overflow-hidden bg-[#ffffff20] w-full cursor-pointer"
 		>
 			<img
@@ -24,7 +25,7 @@ const MyPlaylist = ({ id, images, name, tracks }) => {
 					{name}
 				</p>
 			</div>
-		</div>
+		</Link>
 	);
 };
 

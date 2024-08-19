@@ -1,17 +1,17 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const NavPlaylist = ({ id, images, name, tracks }) => {
 	const navigate = useNavigate("/playlist/name");
 
 
 	const showPlaylist = () => {
-		navigate("/playlist/id=" + name, { state: {track: tracks.href, img: images[0]?.url} });
+		navigate("/playlist/id=" + id, { state: {track: tracks.href, img: images[0]?.url, id} });
 	};
 
 	return (
-		<div
-			onClick={showPlaylist}
+		<Link
+			to={"/playlist/:id=" + id}
 			className="flex rounded-lg p-2 max-sm:rounded-sm overflow-hidden hover:bg-[#ffffff20] w-full cursor-pointer"
 		>
 			<img
@@ -25,7 +25,7 @@ const NavPlaylist = ({ id, images, name, tracks }) => {
 				</p>
                 <p className=' text-[#B3B3B3]'>Playlist - Spotify</p>
 			</div>
-		</div>
+		</Link>
 	);
 }
 
