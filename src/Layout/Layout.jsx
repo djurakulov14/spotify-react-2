@@ -1,8 +1,8 @@
 import NavBar from "../Components/NavBar";
-import {Outlet} from 'react-router-dom'
+import {Outlet, useNavigate} from 'react-router-dom'
 import Header from "../Components/Header";
 import { useEffect, useState } from "react";
-import Login from "../Components/Login";
+import Login from "../Pages/Login.jsx";
 import { useHttp } from '../Hooks/http.hook.js'
 import TOKEN from "../Contexts/token.js";
 import RightAside from "../Components/RightAside.jsx";
@@ -15,6 +15,7 @@ function Layout() {
 	const [track, setTrack] = useState([])
 	const [navPlaylists, setNavPlaylists] = useState([])
 	const {request} = useHttp()
+	const navigate = useNavigate("/login");
 
 
 
@@ -62,7 +63,7 @@ function Layout() {
 	}, []);
 
 	if (!token) {
-		return <Login />;
+		navigate('/login')
 	}
 
     return (
