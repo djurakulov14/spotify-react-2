@@ -42,8 +42,7 @@ const Header = ({user}) => {
             </button>
         </div>
         <div className=" p-2 right h-[40px] flex gap-[10px] items-center rounded-full bg-[#00000080] text-white">
-            <img className=' h-[34px] rounded-full' src={user ? user?.images[0].url : '/user.png'} alt="user" />
-            <span>{user?.display_name}</span>
+            
             <Button
                 className=' w-5'
                 id="basic-button"
