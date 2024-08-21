@@ -501,11 +501,11 @@ body {
             background-color: #000;
             padding: 5px 5px 5px 7px;
             border-radius: 50px;
+            cursor: pointer;
           }
           img:hover {
             background-color: #1a1a1a;
           }
-          cursor: pointer;
         }
         form {
           margin-top: 100px;
@@ -534,7 +534,6 @@ body {
       .right {
         img {
           width: 50px;
-          cursor: pointer;
         }
       }
   
