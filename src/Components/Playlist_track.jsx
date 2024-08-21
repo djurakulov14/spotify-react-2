@@ -17,6 +17,8 @@ export default function Playlist_track({ trackk, num }) {
 			track: item,
 		};
 
+        console.log(data);
+        
 		changeTrack(data);
         
 	};

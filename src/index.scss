@@ -371,6 +371,27 @@
       }
     }
   }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    display: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #fff; /* Цвет ползунка */
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  input[type="range"]:hover::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    display: block;
+    appearance: block;
+    width: 15px;
+    height: 15px;
+    background: #fff; /* Цвет ползунка */
+    border-radius: 50%;
+    cursor: pointer;/* Цвет thumb при hover */
+  }
 
 //   input[type="range"]::-webkit-slider-runnable-track {
 //     background: linear-gradient(to right, #fff var(--progress), gray 0%);

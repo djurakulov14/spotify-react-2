@@ -82,7 +82,7 @@ const Search = () => {
                 <img src="../../Search_S.svg" alt="" />
                 <input type="text" placeholder='Что хочешь включить?' />
             </div>
-            <div className='absolute top-[80px] rounded-tr-xl rounded-tl-xl text-white p-[40px] right-[20%] w-[60%] h-full bg-gradient-to-b from-[#444444] to-[#121212] '>
+            <div className='absolute mb-[100px] top-[80px] rounded-tr-xl rounded-tl-xl text-white p-[40px] right-[20%] w-[60%] h-full bg-gradient-to-b from-[#444444] to-[#121212] '>
                 <h1 className='text-[30px] font-[600] py-[20px]'>Все остальное</h1>
                 <div className="boxSearch">
                     {arr.map((item) => (

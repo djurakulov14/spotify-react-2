@@ -68,7 +68,7 @@ const Home = () => {
 
   return (
 
-    <div className='m-auto rounded-xl mt-[80px] min-h-screen text-white p-[40px] w-[60%] bg-gradient-to-b from-[#444444] to-[#121212] '>
+    <div className='m-auto mb-[100px] rounded-xl mt-[80px] min-h-screen text-white p-[40px] w-[60%] bg-gradient-to-b from-[#444444] to-[#121212] '>
         <div className="greeting mb-[30px]">
             <span className=' font-bold text-5xl'>Good {greeting}</span>
         </div>

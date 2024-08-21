@@ -7,7 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import Search from "./Pages/Search.jsx";
 import Playlist from "./Pages/Playlist.jsx";
 import Login from "./Pages/Login.jsx";
-import AllPlaylists from "./Pages/AllPlaylists.jsx";
+import AllPlaylists from "./Pages/AllPLaylists.jsx";
 
 function App() {
 

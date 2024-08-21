@@ -18,15 +18,10 @@ import currentTrack from "../Contexts/currentTrack.js";
 const Player = () => {
     const {track, changeTrack} = useContext(currentTrack)
 
-
+    let [like, setLike] = useState(true)
     const [image, setImage] = useState(false)
-    const [pause, setPause] = useState(false)
-    const [playingTrack, setPlayingTrack] = useState({})
-    const [like, setLike] = useState(playingTrack?.isLiked)
-    const [local, setLocal] = useState(JSON.parse(localStorage.getItem('lastTrack')))
-
-    console.log(local);
-    
+    const [pause, setPause] = useState(track.isPlaying)
+    const [local, setLocal] = useState(JSON.parse(localStorage.getItem('lastTrack')))    
 
     useEffect(() => {
         const audio = document.querySelector('audio')
@@ -41,8 +36,8 @@ const Player = () => {
 
     }, [pause])
 
-    const img = track?.album?.images[0]?.url || local?.album?.images[0]?.url ||  "https://i.scdn.co/image/ab67616d00001e020eb9240c0c5bbba4a0495587"
-    const artist = track?.album?.artists[0]?.name || local?.album?.artists[0]?.name
+    const img = track?.track?.album?.images[0]?.url || local?.album?.images[0]?.url ||  "https://i.scdn.co/image/ab67616d00001e020eb9240c0c5bbba4a0495587"
+    const artist = track?.track?.album?.artists[0]?.name || local?.album?.artists[0]?.name
 
     useEffect(() => {
         setPause(track.isPlaying)
@@ -82,11 +77,11 @@ const Player = () => {
   };
 
     return ( 
-        <div className="fixed overflow-hidden bottom-0 left-0 bg-[#181818] h-fit w-full flex justify-between items-center p-4 z-[1000] max-lg:p-3 max-[500px]:p-1 max-lg:bottom-24 max-lg:ml-5 max-lg:w-11/12 max-lg:rounded-3xl max-lg:h-24 max-[500px]:h-20">
+        <div className="fixed overflow-hidden bottom-0 left-0 bg-[#181818] h-[100px] w-full flex justify-between items-center p-4 z-[1000] max-lg:p-3 max-[500px]:p-1 max-lg:bottom-24 max-lg:ml-5 max-lg:w-11/12 max-lg:rounded-3xl max-lg:h-24 max-[500px]:h-20">
             <div className="left flex gap-2 items-center max-lg:gap-1">
-                {image ? <img src={img} className="bigImg" onClick={() => setImage(!image)}/> : <img src={img} className="w-20 rounded-xl max-lg:w-12 max-[500px]:w-10"  onClick={() => setImage(!image)}/>}           
+                {image ? <img src={img} className="bigImg" onClick={() => setImage(!image)}/> : <img src={img} className="w-16 rounded-xl max-lg:w-12 max-[500px]:w-10"  onClick={() => setImage(!image)}/>}           
                 <div className="flex text-white flex-col">
-                    <p className="whitespace-nowrap w-fit max-w-52 overflow-hidden max-lg:text-sm max-[500px]:text-xs max-lg:w-40 max-lg:overflow-hidden max-[500px]:w-36 max-[500px]:overflow-hidden max-sm:w-32  max-sm:overflow-hidden">{currentTrack.track?.name}</p>
+                    <p className="whitespace-nowrap w-fit max-w-52 overflow-hidden max-lg:text-sm max-[500px]:text-xs max-lg:w-40 max-lg:overflow-hidden max-[500px]:w-36 max-[500px]:overflow-hidden max-sm:w-32  max-sm:overflow-hidden">{track?.track.name || local?.name}</p>
                     <p className="text-gray-400 max-lg:text-sm max-[500px]:text-xs">{artist}</p>
                 </div>
                 {like ? <AiFillHeart color="#63CF6C" size={25} className="ml-6 max-lg:ml-2" onClick={() => setLike(!like)}/> : <AiOutlineHeart className="ml-6" color="white" size={25} onClick={() => setLike(!like)}/> }
@@ -105,8 +100,9 @@ const Player = () => {
                     {/* <audio src={currentTrack.track?.preview_url}  controls className="max-lg:absolute max-lg:bottom-0 left-0 max-lg:w-full max-lg:h-4"/> */}
                     <audio
                         ref={audioRef}
-                        src={local?.preview_url}
+                        src={track?.track?.preview_url || local?.preview_url}
                         onTimeUpdate={handleTimeUpdate}
+                        autoPlay={track?.isPlaying}
                     />
 
                     <div className="mt-4 flex justify-between items-center gap-8 text-white">

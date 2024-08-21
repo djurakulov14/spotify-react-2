@@ -12,9 +12,8 @@ import Player from "../Components/Player.jsx";
 function Layout() {
 	const [user, setUser] = useState(null)
 	const [token, setToken] = useState();
-	const [track, setTrack] = useState([])
 	const [navPlaylists, setNavPlaylists] = useState([])
-	const [playingTrack, setPlayingTrack] = useState({
+	const [track, setTrack] = useState({
 		isPLaying: false,
 		track: "",
 	});
@@ -22,7 +21,7 @@ function Layout() {
 	const navigate = useNavigate("/login");
 
 	const changeTrack = (data) => {
-		setPlayingTrack(data);
+		setTrack(data);
 	};
 
 	useEffect(() => {
@@ -59,13 +58,6 @@ function Layout() {
 		}).then(res => {
 			setUser(res)			
 		})
-
-		request('https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n/tracks?market=uz', "GET", null,
-			{
-				Authorization: `Bearer ${token}`,
-			}).then(res => {
-				setTrack(res.items[0])								
-			})
 	}, []);
 
 	if (!token) {
@@ -81,7 +73,7 @@ function Layout() {
 			<TOKEN.Provider value={token}>
 				<Outlet />
 			</TOKEN.Provider>
-			<Player curTrack={track}/>
+			<Player/>
 		</currentTrack.Provider>
       </>
      );

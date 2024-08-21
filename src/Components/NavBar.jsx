@@ -5,9 +5,10 @@ import { GoPlus } from "react-icons/go";
 import { GoSearch } from "react-icons/go";
 import NavPlaylist from './NavPlaylist';
 
+
 const NavBar = ({navPlaylists}) => {
   return (
-<nav className="mainLeftBlock px-6 bg-black h-screen fixed left-0 top-0 text-white w-[20%] flex flex-col gap-5">
+<nav className="mainLeftBlock px-6 bg-black h-[90%] fixed left-0 top-0 text-white w-[20%] flex flex-col gap-5">
             <div className="box bg-[#121212] rounded-2xl p-5">
                 <div className="top flex flex-col gap-8">
                     <NavLink 
@@ -27,6 +28,15 @@ const NavBar = ({navPlaylists}) => {
                     to='/search'>
                         <img src="../../Search_S.svg" alt="" />
                         <span className='hover:text-white'>Search</span>
+                    </NavLink>
+                    <NavLink
+                    style={({ isActive }) => ({
+                        color: isActive ? "#ffffff" : "inherit",
+                    })}
+                    className='links ' 
+                    to='/allplaylists'>
+                        <LuLibrary  size={30}/>
+                        <span className='hover:text-white'>Popular playlists</span>
                     </NavLink>
                 </div>
             </div>

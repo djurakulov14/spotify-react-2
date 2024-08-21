@@ -10,8 +10,9 @@ body {
     width: 60%;
     height: fit-content;
     background-color: hsl(0, 1%, 17%);
-    margin-left: 20%;
     overflow-x: hidden;
+    margin: 0 auto; 
+    margin-bottom: 100px;
 }
 .topBox {
 
