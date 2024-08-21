@@ -25,6 +25,7 @@ const Header = ({user}) => {
     };
 
     const localStorageClear = () => {
+        navigate('/login')
 		localStorage.clear();
 		window.location = window.location.href;
         handleClose()

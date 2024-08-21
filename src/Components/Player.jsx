@@ -105,7 +105,7 @@ const Player = () => {
                     {/* <audio src={currentTrack.track?.preview_url}  controls className="max-lg:absolute max-lg:bottom-0 left-0 max-lg:w-full max-lg:h-4"/> */}
                     <audio
                         ref={audioRef}
-                        src={track?.track?.preview_url}
+                        src={local?.preview_url}
                         onTimeUpdate={handleTimeUpdate}
                     />
 
