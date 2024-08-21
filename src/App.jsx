@@ -6,6 +6,7 @@ import Home from "./Pages/Home.jsx";
 import { Route, Routes } from "react-router-dom";
 import Search from "./Pages/Search.jsx";
 import Playlist from "./Pages/Playlist.jsx";
+import Profile from "./Pages/Profile.jsx"
 import Login from "./Pages/Login.jsx";
 import AllPlaylists from "./Pages/AllPlaylists.jsx";
 
@@ -18,6 +19,7 @@ function App() {
                 <Route index element={<Home/>} />
                 <Route path="/search" element={<Search/>} />
                 <Route path="/playlist/:id" element={<Playlist/>} />
+                <Route path="/profile/:id" element={<Profile/>}/>
                 <Route path="/allplaylists/" element={<AllPlaylists/>} />
             </Route>
             <Route path="/login" element={<Login/>} />
