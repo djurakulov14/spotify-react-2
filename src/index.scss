@@ -401,3 +401,145 @@
 //   input[type="range"]::-webkit-slider-runnable-track:hover {
 //     background: linear-gradient(to right, #63CF6C var(--progress), gray 0%);
 //   }
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+}
+
+.containerr {
+  max-width: 1070px;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 100px;
+  background-color: #121212;
+}
+
+.all_block {
+  h1 {
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+}
+
+.block {
+  display: grid;
+  grid-template-columns: repeat(3, 280px);
+
+  gap: 30px;
+
+  .box {
+    width: 280px;
+    height: 150px;
+    display: flex;
+    background-color: greenyellow;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+  
+    h1 {
+      color: #ffffff;
+      margin: 15px 0 0 15px;
+      font-size: 26px;
+      width: 120px;
+    }
+    img {
+      border-radius: 10px;
+      width: 130px;
+      rotate: 25deg;
+      position: absolute;
+      right: -25px;
+      bottom: -15px;
+    }
+  }
+  .box:nth-child(1n) {
+    background-color: rgb(255, 167, 245);
+  }
+  .box:nth-child(2n) {
+    background-color: rgb(255, 69, 69);
+  }
+  .box:nth-child(3) {
+    background-color: rgb(146, 244, 255);
+  }
+  .box:nth-child(4n) {
+    background-color: rgb(255, 236, 92);
+  }
+  .box:nth-child(5n) {
+    background-color: rgb(110, 127, 255);
+  }
+}
+
+.fixedd {
+
+  position: sticky;
+  top: 0px;
+  padding-top: 20px;
+  z-index: 5;
+  background-color: #121212;
+
+  .search_block {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+  
+      .left {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        .arrow {
+          img {
+            width: 35px;
+            margin-right: 5px;
+            background-color: #000;
+            padding: 5px 5px 5px 7px;
+            border-radius: 50px;
+          }
+          img:hover {
+            background-color: #1a1a1a;
+          }
+          cursor: pointer;
+        }
+        form {
+          margin-top: 100px;
+          position: relative;
+          input {
+            width: 300px;
+            height: 45px;
+            padding: 7px 30px;
+            background-color: rgb(63, 63, 63);
+            border-radius: 40px;
+            border: 0;
+            color: #ffffff;
+          }
+          input:hover {
+            background-color: rgb(92, 92, 92);
+            color: #ffffff;
+          }
+          img {
+            width: 25px;
+            position: absolute;
+            left: 5px;
+            top: 10px;
+          }
+        }
+      }
+      .right {
+        img {
+          width: 50px;
+          cursor: pointer;
+        }
+      }
+  
+  }
+  
+  
+  
+}

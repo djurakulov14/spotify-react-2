@@ -1,12 +1,13 @@
 
 .mainBlock {
 
-    width: 80%;
+    width: 60%;
     height: fit-content;
     background-color:  hsl(0, 1%, 17%);
-    margin-left: 20%;
+    margin: 0 auto;
     overflow-x: hidden;
     margin-top: 85px;
+    margin-bottom: 100px;
 }
 
 .topBlock {
