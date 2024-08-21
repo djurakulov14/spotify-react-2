@@ -32,7 +32,7 @@ const Header = ({user}) => {
 
 
   return (
-    <header className=' w-[80%] fixed top-0 z-10 right-0 py-[20px] px-[40px] flex justify-between items-center bg-[#3333A3]'>
+    <header className=' rounded-tr-xl rounded-tl-xl w-[60%] fixed top-0 z-10 left-[20%] py-[20px] px-[40px] flex justify-between items-center bg-[#444444]'>
         <div className="left flex gap-5">
             <button onClick={() => navigate(-1)} className=' p-1 text-center flex flex-col items-center bg-[#00000080] rounded-full'> 
                 <IoIosArrowBack size={40} color='white'/>
@@ -42,15 +42,17 @@ const Header = ({user}) => {
             </button>
         </div>
         <div className=" p-2 right h-[40px] flex gap-[10px] items-center rounded-full bg-[#00000080] text-white">
-            
+            <img className=' h-[34px] rounded-full' src={user ? user?.images[0].url : '/user.png'} alt="user" />
+            <span>{user?.display_name}</span>
             <Button
+                className=' w-5'
                 id="basic-button"
                 aria-controls={open ? 'basic-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
             >
-                {open ? <IoMdArrowDropup size={40} color='white'/> : <IoMdArrowDropdown size={40} color='white'/>}
+                {open ? <IoMdArrowDropup  size={40} color='white'/> : <IoMdArrowDropdown size={40} color='white'/>}
             </Button>
             <Menu
                 id="basic-menu"

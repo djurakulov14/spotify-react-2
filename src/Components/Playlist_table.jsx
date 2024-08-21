@@ -3,73 +3,71 @@ import clock_img from '../images/playlist_images/time-regular-24.png';
 import Playlist_track from '../Components/Playlist_track';
 import { useEffect, useState } from 'react';
 
-const MusicTable = () => {
-    const [tracks, setTracks] = useState([]);
-    const [playlistId, setPlaylistId] = useState(''); 
+const MusicTable = ({tracks}) => {
 
 
-     useEffect(() => {
-        const fetchPlaylists = async () => {
-            const accessToken = localStorage.getItem('token');
+    //  useEffect(() => {
+    //     const fetchPlaylists = async () => {
+    //         const accessToken = localStorage.getItem('token');
 
-            try {
-                const response = await fetch('https://api.spotify.com/v1/me/playlists', {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                });
+    //         try {
+    //             const response = await fetch('https://api.spotify.com/v1/me/playlists', {
+    //                 headers: {
+    //                     Authorization: `Bearer ${accessToken}`,
+    //                 },
+    //             });
 
-                if (response.ok) {
-                    const data = await response.json();
-                    const firstPlaylistId = data.items[0]?.id; 
-                    setPlaylistId(firstPlaylistId); 
-                } else {
-                    console.error('Failed', response.statusText);
-                }
-            } catch (error) {
-                console.error('Error', error);
-            }
-        };
+    //             if (response.ok) {
+    //                 const data = await response.json();
+    //                 const firstPlaylistId = data.items[0]?.id; 
+    //                 setPlaylistId(firstPlaylistId); 
+    //             } else {
+    //                 console.error('Failed', response.statusText);
+    //             }
+    //         } catch (error) {
+    //             console.error('Error', error);
+    //         }
+    //     };
 
-        fetchPlaylists();
-    }, []);
+    //     fetchPlaylists();
+    // }, []);
 
-    useEffect(() => {
-        const fetchTracks = async () => {
-            if (!playlistId) return;
+    // useEffect(() => {
+    //     const fetchTracks = async () => {
+    //         if (!playlistId) return;
 
-            const accessToken = localStorage.getItem('token');
+    //         const accessToken = localStorage.getItem('token');
 
-            try {
-                const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                });
+    //         try {
+    //             const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+    //                 headers: {
+    //                     Authorization: `Bearer ${accessToken}`,
+    //                 },
+    //             });
 
-                if (response.ok) {
-                    const data = await response.json();
-                    const fetchedTracks = data.items.map((item, index) => ({
-                        id: index,
-                        title: item.track.name,
-                        artist: item.track.artists.map(artist => artist.name).join(', '),
-                        album: item.track.album.name,
-                        cover: item.track.album.images[0]?.url,
-                        added: timeSince(new Date(item.added_at)),
-                        duration: new Date(item.track.duration_ms).toISOString().substr(14, 5),
-                        explicit: item.track.explicit,
-                    }));
-                    setTracks(fetchedTracks);
-                } else {
-                    console.error('Failed to fetch tracks:', response.statusText);
-                }
-            } catch (error) {
-                console.error('Error fetching tracks:', error);
-            }
-        };
+    //             if (response.ok) {
+    //                 const data = await response.json();
+    //                 const fetchedTracks = data.items.map((item, index) => ({
+    //                     id: index,
+    //                     title: item.track.name,
+    //                     artist: item.track.artists.map(artist => artist.name).join(', '),
+    //                     album: item.track.album.name,
+    //                     cover: item.track.album.images[0]?.url,
+    //                     added: timeSince(new Date(item.added_at)),
+    //                     duration: new Date(item.track.duration_ms).toISOString().substr(14, 5),
+    //                     explicit: item.track.explicit,
+    //                 }));
+    //                 setTracks(fetchedTracks);
+    //             } else {
+    //                 console.error('Failed to fetch tracks:', response.statusText);
+    //             }
+    //         } catch (error) {
+    //             console.error('Error fetching tracks:', error);
+    //         }
+    //     };
 
-        fetchTracks();
-    }, [playlistId]);
+    //     fetchTracks();
+    // }, [playlistId]);
 
     const timeSince = (date) => {
         const now = new Date();
@@ -109,7 +107,7 @@ const MusicTable = () => {
                 </thead>
                 <tbody className={style.trBox}>
                     {tracks.map((track, index) => (
-                        <Playlist_track track={track} num={index} key={track.id} />
+                        <Playlist_track trackk={track} num={index} key={track.id} />
                     ))}
                 </tbody>
             </table>

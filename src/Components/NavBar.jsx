@@ -1,52 +1,49 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
+import { LuLibrary } from "react-icons/lu";
+import { GoPlus } from "react-icons/go";
+import { GoSearch } from "react-icons/go";
+import NavPlaylist from './NavPlaylist';
 
-const NavBar = () => {
+const NavBar = ({navPlaylists}) => {
   return (
-<nav className="mainLeftBlock">
-            <div className="box">
-                <div className="top">
-                    <Link  to='/' className="active links">
+<nav className="mainLeftBlock px-6 bg-black h-screen fixed left-0 top-0 text-white w-[20%] flex flex-col gap-5">
+            <div className="box bg-[#121212] rounded-2xl p-5">
+                <div className="top flex flex-col gap-8">
+                    <NavLink 
+                    style={({ isActive }) => ({
+                        color: isActive ? "#ffffff" : "inherit",
+                    })}
+                    to='/' 
+                    className="links ">
                         <img src="../../Home_Fill_S.svg" alt="" />
-                        <span>Home</span>
-                    </Link>
-                    <Link className='links' to='/search'>
+                        <span className='hover:text-white'>Home</span>
+                    </NavLink>
+                    <NavLink
+                    style={({ isActive }) => ({
+                        color: isActive ? "#ffffff" : "inherit",
+                    })}
+                    className='links ' 
+                    to='/search'>
                         <img src="../../Search_S.svg" alt="" />
-                        <span>Search</span>
-                    </Link>
-                    <div>
-                        <img src="../../Library_S.svg" alt="" />
-                        <span>Library</span>
-                    </div>
-                    <div className="addLibrary">
-                        <img src="../../+Library_S.svg" alt="" />
-                        <span>Create Playlist</span>
-                    </div>
-                    <div className="active">
-                        <img src="../../Liked Songs_S.svg" alt="" />
-                        <span>Liked Songs</span>
-                    </div>
+                        <span className='hover:text-white'>Search</span>
+                    </NavLink>
                 </div>
             </div>
-
-            <div className="line"></div>
-            <div className="box1">
-                <div className="bottom">
-                    <div className="navigation">
-                        <p>Chill Mix</p>
-                        <p>Insta Hits</p>
-                        <p>Your Top Songs 2021</p>
-                        <p>Mellow Songs</p>
-                        <p>Anime Lofi & Chillhop Music</p>
-                        <p>BG Afro “Select” Vibes</p>
-                        <p>Afro “Select” Vibes</p>
-                        <p>Happy Hits!</p>
-                        <p>Deep Focus</p>
-                        <p>Instrumental Study</p>
-                        <p>OST Compilations</p>
-                        <p>Nostalgia for old souled mill...</p>
-                        <p>Mixed Feelings</p>
+            <div className="bot bg-[#121212] rounded-2xl p-5">
+                <div className="top flex justify-between items-center mb-5">
+                    <div className="links left flex gap-3 items-center">
+                        <LuLibrary  size={30}/>
+                        <span className='hover:text-white'>Моя Медиатека</span>
                     </div>
+                    <GoPlus size={30}/>
+
+                </div>
+                {/* <GoSearch/> */}
+                <div className="playlists flex flex-col gap-3">
+                    {
+                        navPlaylists.map(item => <NavPlaylist key={item.id} {...item} />)
+                    }
                 </div>
             </div>
         </nav>
