@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 import { FaPause, FaPlay } from "react-icons/fa";
-import currentTrack from "../../Contexts/currentTrack";
-import searchContext from "../../Contexts/searchContext";
-import Song from "../children/Song";
+import currentTrack from "../Contexts/currentTrack";
+import Song from "./Song";
 
 function SearchResult({ tracks }) {
 	const trackIMG = tracks[0]?.album?.images[0]?.url;

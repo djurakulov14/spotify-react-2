@@ -6,14 +6,13 @@ const RightAside = () => {
     const {track, changeTrack} = useContext(currentTrack)
     const [local, setLocal] = useState(JSON.parse(localStorage.getItem('lastTrack')))    
 
-    console.log(track);
     
 
     const img = track?.track?.album?.images[0]?.url || local?.album?.images[0]?.url ||  "https://i.scdn.co/image/ab67616d00001e020eb9240c0c5bbba4a0495587"
     const artist = track?.track?.album?.artists[0]?.name || local?.album?.artists[0]?.name
 
   return (
-    <div className=' w-[20%] px-4 fixed h-[90%]  text-white right-0 top-0 z-10'>
+    <div className=' w-[20%] bg-black px-4 fixed h-[90%] text-white right-0 top-0 z-10'>
         <div className='bg-[#121212] rounded-xl p-5 flex flex-col gap-5'>
             <h1 className=' font-bold text-xl'>Current track</h1>
             <img className=' rounded-xl' src={img} alt="playlist" />

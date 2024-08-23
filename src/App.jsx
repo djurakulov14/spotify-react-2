@@ -19,6 +19,7 @@ function App() {
                 <Route index element={<Home/>} />
                 <Route path="/search" element={<Search/>} />
                 <Route path="/playlist/:id" element={<Playlist/>} />
+                <Route path="/playlist/:category" element={<Playlist/>} />
                 <Route path="/profile/" element={<Profile/>}/>
                 <Route path="/allplaylists/" element={<AllPlaylists/>} />
             </Route>

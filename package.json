@@ -13,6 +13,7 @@
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^5.16.7",
+    "@uidotdev/usehooks": "^2.4.1",
     "concurrently": "^8.2.2",
     "json-server": "^1.0.0-beta.1",
     "react": "^18.3.1",

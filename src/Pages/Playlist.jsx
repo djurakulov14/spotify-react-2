@@ -9,7 +9,7 @@ import { useContext, useEffect, useState } from 'react';
 import TOKEN from '../Contexts/token';
 import Loading from '../Components/Loading';
 import { useHttp } from '../Hooks/http.hook';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Playlist = () => {
     const [tracks, setTracks] = useState([]);
@@ -19,14 +19,16 @@ const Playlist = () => {
     const {state} = useLocation()
     const location = useLocation()
     
+    
     const id = location.pathname.split('=')[1]
     
     
+    console.log(id);
+    
     useEffect(() => {
-        
-        
-        if(state?.track) {
-            request(`https://api.spotify.com/v1/playlists/${id}`, "GET", null, {
+
+        if (location.pathname.includes('category')) {
+            request(`https://api.spotify.com/v1/browse/categories/${id}/playlists`, "GET", null, {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
@@ -36,21 +38,36 @@ const Playlist = () => {
                 setTracks(res.tracks.items)
                 console.log(res);
             })
-        } else {
-            request(`https://api.spotify.com/v1/playlists/${id}`, "GET", null, {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            })
-            .then(res => {
-                setAlbum(res);
-                setTracks(res.tracks.items)
-                
-                console.log(res);
-                
-            })
+        } else{
+
+            if(state?.track) {
+                request(`https://api.spotify.com/v1/playlists/${id}`, "GET", null, {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                })
+                .then(res => {
+                    setAlbum(res);
+                    setTracks(res.tracks.items)
+                    console.log(res);
+                })
+            } else {
+                request(`https://api.spotify.com/v1/playlists/${id}`, "GET", null, {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                })
+                .then(res => {
+                    setAlbum(res);
+                    setTracks(res.tracks.items)
+                    
+                    console.log(res);
+                    
+                })
+            }
         }
-    }, []);
+        
+    }, [id]);
 
 
     if(loading) {
@@ -59,91 +76,14 @@ const Playlist = () => {
     if(error) {
         return <span>ERROR</span>
     }
-    
 
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const accessToken = localStorage.getItem('token');
-
-    //         try {
-    //             const playlistsResponse = await fetch('https://api.spotify.com/v1/me/playlists', {
-    //                 headers: {
-    //                     Authorization: `Bearer ${accessToken}`,
-    //                 },
-    //             });
-
-    //             if (playlistsResponse.ok) {
-    //                 const playlistsData = await playlistsResponse.json();
-    //                 const firstPlaylist = playlistsData.items[0];
-
-    //                 if (firstPlaylist) {
-    //                     setPlaylistId(firstPlaylist.id);
-    //                     setPlaylistName(firstPlaylist.name);
-    //                     setCoverUrl(firstPlaylist.images[0]?.url);
-
-    //                     // Fetch playlist details
-    //                     const playlistDetailsResponse = await fetch(`https://api.spotify.com/v1/playlists/${firstPlaylist.id}`, {
-    //                         headers: {
-    //                             Authorization: `Bearer ${accessToken}`,
-    //                         },
-    //                     });
-
-    //                     if (playlistDetailsResponse.ok) {
-    //                         const playlistDetails = await playlistDetailsResponse.json();
-    //                         setPlaylistName(playlistDetails.name);
-    //                         setCoverUrl(playlistDetails.images[0]?.url);
-    //                         setSongsNumber(playlistDetails.tracks.total);
-
-    //                         const tracksResponse = await fetch(playlistDetails.tracks.href, {
-    //                             headers: {
-    //                                 Authorization: `Bearer ${accessToken}`,
-    //                             },
-    //                         });
-
-    //                         if (tracksResponse.ok) {
-    //                             const tracksData = await tracksResponse.json();
-    //                             const totalDurationMs = tracksData.items.reduce((acc, item) => acc + item.track.duration_ms, 0);
-    //                             const totalDurationMinutes = Math.floor(totalDurationMs / 60000);
-    //                             const totalDurationSeconds = Math.floor((totalDurationMs % 60000) / 1000);
-    //                             setSongsDuration(`${totalDurationMinutes}:${totalDurationSeconds.toString().padStart(2, '0')}`);
-    //                         } else {
-    //                             console.error('Failed to fetch tracks:', tracksResponse.statusText);
-    //                         }
-    //                     } else {
-    //                         console.error('Failed to fetch playlist details:', playlistDetailsResponse.statusText);
-    //                     }
-    //                 }
-    //             } else {
-    //                 console.error('Failed to fetch playlists:', playlistsResponse.statusText);
-    //             }
-
-    //             const userProfileResponse = await fetch('https://api.spotify.com/v1/me', {
-    //                 headers: {
-    //                     Authorization: `Bearer ${accessToken}`,
-    //                 },
-    //             });
-
-    //             if (userProfileResponse.ok) {
-    //                 const userProfile = await userProfileResponse.json();
-    //                 setUserName(userProfile.display_name);
-    //             } else {
-    //                 console.error('Failed to fetch user profile:', userProfileResponse.statusText);
-    //             }
-    //         } catch (error) {
-    //             console.error('Error fetching data:', error);
-    //         }
-    //     };
-
-    //     fetchData();
-    // }, []);
 
     return (
         <>
             <div className={style.mainBlock}>
                 <div className={style.topBox}>
                     <div className={style.topBox2}>
-                        <CoverBlock coverUrl={album?.images[0].url} /> 
+                        <CoverBlock coverUrl={album?.images[0]?.url} /> 
                         <div className={style.titleBox}>
                             <span className={style.playlistTxt}>Плейлист</span>
                             <span className={style.title}>{album?.name || 'Загрузка...'}</span>

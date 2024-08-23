@@ -8,11 +8,13 @@ import { useHttp } from '../Hooks/http.hook.js'
 import TOKEN from "../Contexts/token.js";
 import RightAside from "../Components/RightAside.jsx";
 import Player from "../Components/Player.jsx";
+import searchContext from "../Contexts/searchContext.js";
 
 function Layout() {
 	const [user, setUser] = useState(null)
 	const [token, setToken] = useState();
 	const [navPlaylists, setNavPlaylists] = useState([])
+	const [searchText, setSearchText] = useState('')
 	const [track, setTrack] = useState({
 		isPLaying: false,
 		track: "",
@@ -23,6 +25,10 @@ function Layout() {
 	const changeTrack = (data) => {
 		setTrack(data);
 	};
+
+	const changeSearchText = (text) => {
+		setSearchText(text)
+	}
 
 	useEffect(() => {
 		const hash = window.location.hash;
@@ -65,17 +71,19 @@ function Layout() {
 	}
 
     return (
-      <>
-        <currentTrack.Provider value={{ track, changeTrack }}>
-			<NavBar navPlaylists={navPlaylists}/>
-			<Header user={user}/>
-			<RightAside/>
-			<TOKEN.Provider value={token}>
-				<Outlet />
-			</TOKEN.Provider>
-			<Player/>
-		</currentTrack.Provider>
-      </>
+    <>
+	  	<searchContext.Provider value={{searchText, changeSearchText}} >
+			<currentTrack.Provider value={{ track, changeTrack }}>
+				<NavBar navPlaylists={navPlaylists}/>
+				<Header user={user}/>
+				<RightAside/>
+				<TOKEN.Provider value={token}>
+					<Outlet />
+				</TOKEN.Provider>
+				<Player/>
+			</currentTrack.Provider>
+	  	</searchContext.Provider>
+    </>
      );
 }
 

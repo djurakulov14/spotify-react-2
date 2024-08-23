@@ -1,21 +1,24 @@
 import "/src/App.css";
 import React, { useContext, useState } from "react";
-import All from "/src/Components/genreBlock";
 import { useEffect } from "react";
 import TOKEN from "../Contexts/token";
 import { useHttp } from "../Hooks/http.hook";
+import GenreBlock from "../Components/genreBlock";
+import SearchResult from "../Components/SearchResult";
+import RecentSearches from "../Components/RecentSearches";
+import searchContext from "../Contexts/searchContext";
+import { useDebounce } from "@uidotdev/usehooks";
 
 const Search = () => {
-  const [data, setData] = useState([]);
-  const [query, setQuery] = useState('')
-  const { loading, error, request } = useHttp();
-  const token = useContext(TOKEN);
+	const [data, setData] = useState([]);
+	const [query, setQuery] = useState('')
+	const { loading, error, request } = useHttp();
+	const token = useContext(TOKEN);
+	const { searchText } = useContext(searchContext);
+	const [tracks, setTracks] = useState([]);
 
 
-  const CLIENT_ID = "df740335f0be409ea3fc389380ca2f77";
-  const REDIRECT_URI = "http://localhost:5174/";
-  const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
-  const RESPONSE_TYPE = "token";
+
 
   useEffect(() => {
     let token = localStorage.getItem("token");
@@ -28,8 +31,22 @@ const Search = () => {
         location.assign("/");
       }
     }
-    //   console.log(location.hash.split("=")[1].split('&')[0]);
   }, []);
+
+  const makeRequest = useDebounce(() => {
+	if (searchText.length > 0) {
+		request(
+			`https://api.spotify.com/v1/search?q=${searchText}&type=track%2Cartist&market=uz&limit=5&offset=5`,
+			"GET",
+			null,
+			{
+				Authorization: `Bearer ${token}`,
+			}
+		).then((res) => {
+			setTracks(res.tracks.items);
+		});
+	}
+}, 400);
 
   useEffect(() => {
     let token = localStorage.getItem("token");
@@ -43,49 +60,24 @@ const Search = () => {
       .then((res) => {
         setData(res.categories.items);
       });
-
-      request(
-        `https://api.spotify.com/v1/search?q=${query}&type=track&include_external=audio`,
-        "GET",
-        null,
-        {
-            Authorization: `Bearer ${token}`,
-        }
-    ).then((res) => {
-        setMyPlayslits(res.items);
-        console.log(res);
-        
-    });
   }, []);
+
+  useEffect(() => makeRequest, [searchText])
 
   return (
     <>
-      <div className="containerr">
-        <div className="fixedd">
-          <div className="search_block">
-            <div className="left">
-              <form>
-                <input type="text" placeholder="Что хочешь включить ?" />
-                <img src="/icon/search.png" alt="" />
-              </form>
-            </div>
-            <div className="right">
-              <img src="/icon/user.png" alt="" />
-            </div>
-          </div>
-        </div>
-
-        <div className="all_block">
-
-          <div className="block">
-            {data.length > 0 ? (
-              data.map((genre) => <All key={genre.id} genre={genre} />)
-            ) : (
-              <p>Загрузка...</p>
-            )}
-          </div>
-        </div>
-      </div>
+      	<div className="m-auto mb-[100px] rounded-xl mt-[80px] min-h-screen text-white p-[40px] w-[60%] bg-gradient-to-b from-[#444444] to-[#121212] ">
+				{searchText ? (
+					<SearchResult tracks={tracks} />
+				) : (
+					<RecentSearches />
+				)}
+			<section className=" flex gap-7 flex-wrap">
+				{
+					data.map(item => <GenreBlock genre={item} key={item.id} />)
+				}
+			</section>
+	  	</div>
     </>
   );
 };

@@ -1,16 +1,21 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropup } from "react-icons/io";
+import { FiSearch } from "react-icons/fi";
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import searchContext from '../Contexts/searchContext';
 
 const Header = ({user}) => {
     
     const navigate = useNavigate();
+	const location = useLocation();
+	const {searchText, changeSearchText} = useContext(searchContext);
+
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -41,6 +46,18 @@ const Header = ({user}) => {
             <button  onClick={() => navigate(1)}className=' p-1 text-center flex flex-col items-center bg-[#00000080] rounded-full'>
                 <IoIosArrowForward size={40} color='white'/>
             </button>
+            {location.pathname === "/search" ? (
+					<div className="mob-inp h-12 flex gap-2 w-full rounded-full items-center bg-white py-[12px] px-[18px] mx-[20px] max-sm:absolute top-20 left-2 max-sm:mx-0 max-sm:w-[95%] max-sm:rounded-sm" >
+						<FiSearch size="27" color="black" />
+						<input
+							className="xl:w-[270px] lg:w-[270px] md:w-[270px] sm:w-[270px] w-full h-[25px] outline-none text-[22px] text-black"
+							placeholder="Что хочешь включить?"
+							type="text"
+							defaultValue={searchText}
+							onChange={(e) => changeSearchText(e.target.value)}
+						/>
+					</div>
+				) : null}
         </div>
         <div className=" p-2 right h-[40px] flex gap-[10px] items-center rounded-full bg-[#00000080] text-white">
             <img className=' h-[34px] rounded-full' src={user ? user?.images[0].url : '/user.png'} alt="user" />

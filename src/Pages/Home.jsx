@@ -59,11 +59,9 @@ const Home = () => {
 			}
 		).then(res => {
 			setPlayslits(res?.playlists?.items)
-			console.log(res);
-
 			
 		})
-	}, []);
+	}, [token]);
 
 
   return (
