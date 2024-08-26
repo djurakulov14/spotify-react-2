@@ -21,10 +21,7 @@ const Playlist = () => {
     
     
     const id = location.pathname.split('=')[1]
-    
-    
-    console.log(id);
-    
+        
     useEffect(() => {
 
         if (location.pathname.includes('category')) {

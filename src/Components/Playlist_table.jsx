@@ -12,8 +12,8 @@ const MusicTable = ({tracks}) => {
                 <thead className={style.thead}>
                     <tr className={style.tdBox}>
                         <th className={style.thHash}>#</th>
-                        <th className={style.th}>Название</th>
-                        <th className={style.th}>Альбом</th>
+                        <th className={`${style.th} ${style.albumth}`}>Альбом</th>
+                        <th className={`${style.th} ${style.datath}`}>Дата добавления</th>
                         <th className={style.th}>Дата добавления</th>
                         <th className={style.th}>
                             <img className={style.clock_img} src={clock_img} alt="Clock icon" />
