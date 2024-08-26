@@ -10,7 +10,7 @@ const PlaylistCard = ({item}) => {
    }
 
    return (
-      <div onClick={showPlaylist} className="max-sm:max-w-full max-sm:p-3 bg-[#ffffff10] p-4 rounded-lg w-full max-w-[224px]">
+      <div onClick={showPlaylist} className="max-sm:max-w-full max-sm:p-3 bg-[#ffffff10] p-4 rounded-lg w-full max-w-[224px] cursor-pointer">
          <img src={img} alt="" className="w-full rounded-lg" />
          <div>
             <p className="max-sm:mt-3 text-white text-xl font-bold mb-2 mt-6 truncate">{item.name}</p>

@@ -47,7 +47,7 @@ function AllPlaylists() {
 	return (
 		<>
 			<div className='m-auto rounded-xl mb-[100px] top-[80px] mt-[80px] min-h-screen text-white p-[40px] w-[60%] bg-gradient-to-b from-[#444444] to-[#121212] '>
-			<div className="flex items-center justify-between">
+			<div className="flex items-center justify-between max-md:flex-wrap max-sm-flex-wrap">
 				<h2 className="max-sm:text-[22px] text-white text-3xl font-bold mb-4">
 					{myPlaylists?.message}
 				</h2>
@@ -68,13 +68,13 @@ function AllPlaylists() {
 					</button>
 				</div>
 			</div>
-			<div className="max-2xl:grid-cols-5 max-md:grid-cols-3 max-sm:grid-cols-2 max-[400px]:grid-cols-2 w-full max-w-[1400px] mt-5 grid grid-cols-5 gap-6">
+			<div className="all-playlists_box max-2xl:grid-cols-5 max-md:grid-cols-3 max-lg:grid-cols-4 max-sm:grid-cols-2 max-[400px]:grid-cols-2 w-full max-w-full mt-5 grid grid-cols-5 gap-6">
 				{
 										
 					myPlaylists?.playlists?.items?.map(item => <PlaylistCard key={item.id} item={item} />)
 					
 				}
-			</div>
+			</div>``
 			</div>
 		</>
 	);
