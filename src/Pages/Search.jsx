@@ -66,7 +66,7 @@ const Search = () => {
 
   return (
     <>
-      	<div className="m-auto mb-[100px] rounded-xl mt-[80px] min-h-screen text-white p-[40px] w-[60%] bg-gradient-to-b from-[#444444] to-[#121212] ">
+      	<div className="m-auto mb-[100px] rounded-[10px] mt-[0px] pt-[100px] min-h-screen text-white p-[40px] w-[60%] bg-gradient-to-b from-[#444444] to-[#121212] ">
 				{searchText ? (
 					<SearchResult tracks={tracks} />
 				) : (
