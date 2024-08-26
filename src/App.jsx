@@ -1,5 +1,4 @@
 import "./App.css";
-
 import './index.scss'
 import Layout from './Layout/Layout.jsx'
 import Home from "./Pages/Home.jsx";

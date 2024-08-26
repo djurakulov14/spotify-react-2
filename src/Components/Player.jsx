@@ -77,7 +77,7 @@ const Player = () => {
   };
 
     return ( 
-        <div className="fixed overflow-hidden bottom-0 left-0 bg-[#181818] h-[100px] w-full flex justify-between items-center p-4 z-[1000] max-lg:p-3 max-[500px]:p-1 max-lg:bottom-24 max-lg:ml-5 max-lg:w-11/12 max-lg:rounded-3xl max-lg:h-24 max-[500px]:h-20">
+        <div className="fixed overflow-hidden bottom-0 left-0 bg-[#181818] h-[100px] w-full flex justify-between items-center p-4 z-[1000] max-lg:p-3 max-[500px]:p-1 max-lg:bottom-24 max-lg:ml-5 max-lg:w-11/12 max-w-full max-lg:rounded-3xl max-lg:h-24 max-[500px]:h-20">
             <div className="left flex gap-2 items-center max-lg:gap-1">
                 {image ? <img src={img} className="bigImg" onClick={() => setImage(!image)}/> : <img src={img} className="w-16 rounded-xl max-lg:w-12 max-[500px]:w-10"  onClick={() => setImage(!image)}/>}           
                 <div className="flex text-white flex-col">
