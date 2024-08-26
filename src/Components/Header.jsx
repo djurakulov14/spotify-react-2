@@ -38,13 +38,13 @@ const Header = ({user}) => {
 
 
   return (
-    <header className=' rounded-tr-xl rounded-tl-xl w-[60%] fixed top-0 z-10 left-[20%] py-[20px] px-[40px] flex justify-between items-center bg-[#444444]'>
-        <div className="left flex gap-5">
-            <button onClick={() => navigate(-1)} className=' p-1 text-center flex flex-col items-center bg-[#00000080] rounded-full'> 
-                <IoIosArrowBack size={40} color='white'/>
+    <header className=' rounded-tr-xl rounded-tl-xl w-[60%] fixed top-0 z-10 left-[20%] py-[20px] px-[40px] flex justify-between items-center bg-[#444444] max-2xl:w-[70%] max-2xl:left-[30%] max-md:w-full max-md:left-0 max-lg:h-[85px] max-lg:p-2'>
+        <div className="left flex gap-5 max-lg:gap-2">
+            <button onClick={() => navigate(-1)} className=' p-1 text-center flex flex-col items-center bg-[#00000080] rounded-full max-md:w-[32px] max-md:h-[32px]'> 
+                <IoIosArrowBack size={40} color='white' className=""/>
             </button>
-            <button  onClick={() => navigate(1)}className=' p-1 text-center flex flex-col items-center bg-[#00000080] rounded-full'>
-                <IoIosArrowForward size={40} color='white'/>
+            <button  onClick={() => navigate(1)}className=' p-1 text-center flex flex-col items-center bg-[#00000080] rounded-full max-md:w-[32px] max-md:h-[32px]'>
+                <IoIosArrowForward size={40} color='white' className=""/>
             </button>
             {location.pathname === "/search" ? (
 					<div className="mob-inp h-12 flex gap-2 w-full rounded-full items-center bg-white py-[12px] px-[18px] mx-[20px] max-sm:absolute top-20 left-2 max-sm:mx-0 max-sm:w-[95%] max-sm:rounded-sm" >
@@ -59,8 +59,8 @@ const Header = ({user}) => {
 					</div>
 				) : null}
         </div>
-        <div className=" p-2 right h-[40px] flex gap-[10px] items-center rounded-full bg-[#00000080] text-white">
-            <img className=' h-[34px] rounded-full' src={user ? user?.images[0].url : '/user.png'} alt="user" />
+        <div className=" p-2 right h-[40px] flex gap-[10px] items-center rounded-full bg-[#00000080] text-white max-md:h-[35px] max-sm:gap-1">
+            <img className=' h-[34px] rounded-full max-lg:h-[26px]' src={user ? user?.images[0].url : '/user.png'} alt="user" />
             <span>{user?.display_name}</span>
             <Button
                 className=' w-5'
@@ -77,9 +77,6 @@ const Header = ({user}) => {
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
-                MenuListProps={{
-                'aria-labelledby': 'basic-button',
-                }}
             >
                 <MenuItem onClick={handleClose}><Link to={'/profile'}>Profile</Link></MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>

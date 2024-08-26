@@ -5,10 +5,6 @@ const NavPlaylist = ({ id, images, name, tracks }) => {
 	const navigate = useNavigate("/playlist/name");
 
 
-	const showPlaylist = () => {
-		navigate("/playlist/id=" + id, { state: {track: tracks.href, img: images[0]?.url, id} });
-	};
-
 	return (
 		<Link
 			to={"/playlist/:id=" + id}

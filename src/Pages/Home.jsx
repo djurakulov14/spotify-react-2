@@ -66,9 +66,9 @@ const Home = () => {
 
   return (
 
-    <div className='m-auto mb-[100px] rounded-xl mt-[80px] min-h-screen text-white p-[40px] w-[60%] bg-gradient-to-b from-[#444444] to-[#121212] '>
+    <div className='m-auto mb-[100px] rounded-xl mt-[80px] min-h-screen text-white p-[40px] w-[60%] bg-gradient-to-b from-[#444444] to-[#121212] max-2xl:w-[70%] max-2xl:ml-[30%] max-md:w-full max-md:ml-[0%] max-lg:p-2'>
         <div className="greeting mb-[30px]">
-            <span className=' font-bold text-5xl'>Good {greeting}</span>
+            <span className=' font-bold text-5xl max-lg:text-3xl max-sm:text-xl'>Good {greeting}</span>
         </div>
         <div className="2xl:grid-cols-3 grid grid-cols-2 gap-4 max-sm:gap-2 max-lg:grid-cols-1 ">
 			{

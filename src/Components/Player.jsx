@@ -77,16 +77,16 @@ const Player = () => {
   };
 
     return ( 
-        <div className="fixed overflow-hidden bottom-0 left-0 bg-[#181818] h-[100px] w-full flex justify-between items-center p-4 z-[1000] max-lg:p-3 max-[500px]:p-1 max-lg:bottom-24 max-lg:ml-5 max-lg:w-11/12 max-w-full max-lg:rounded-3xl max-lg:h-24 max-[500px]:h-20">
+        <div className="fixed overflow-hidden bottom-0 left-0 bg-[#181818] h-[100px] w-full flex justify-between items-center p-4 z-[1000] max-lg:p-3 max-[500px]:p-1 max-lg:bottom-10 max-lg:ml-5 max-lg:w-11/12 max-w-full max-lg:rounded-3xl max-lg:h-24 max-[500px]:h-20 max-sm:bottom-1">
             <div className="left flex gap-2 items-center max-lg:gap-1">
                 {image ? <img src={img} className="bigImg" onClick={() => setImage(!image)}/> : <img src={img} className="w-16 rounded-xl max-lg:w-12 max-[500px]:w-10"  onClick={() => setImage(!image)}/>}           
                 <div className="flex text-white flex-col">
-                    <p className="whitespace-nowrap w-fit max-w-52 overflow-hidden max-lg:text-sm max-[500px]:text-xs max-lg:w-40 max-lg:overflow-hidden max-[500px]:w-36 max-[500px]:overflow-hidden max-sm:w-32  max-sm:overflow-hidden">{track?.track.name || local?.name}</p>
+                    <p className="whitespace-nowrap w-fit overflow-hidden max-lg:text-sm max-[500px]:text-xs max-lg:max-w-40 max-lg:overflow-hidden max-[500px]:max-w-36 max-[500px]:overflow-hidden max-sm:max-w-32  max-sm:overflow-hidden">{track?.track.name || local?.name}</p>
                     <p className="text-gray-400 max-lg:text-sm max-[500px]:text-xs">{artist}</p>
                 </div>
                 {like ? <AiFillHeart color="#63CF6C" size={25} className="ml-6 max-lg:ml-2" onClick={() => setLike(!like)}/> : <AiOutlineHeart className="ml-6" color="white" size={25} onClick={() => setLike(!like)}/> }
             </div>
-            <div className="mid flex flex-col items-center">
+            <div className="mid flex flex-col max-lg:w-[70%] max-lg:justify-between items-center max-lg:flex-row-reverse">
                 <div className="top flex gap-2 items-center">
                     <TfiControlShuffle color="c4c4c4" size={30} className=" max-lg:hidden"/>
                     <MdSkipPrevious color="c4c4c4" size={35} className=" max-lg:hidden" onClick={"nextTrack"}/>
@@ -96,7 +96,7 @@ const Player = () => {
                     <MdSkipNext color="c4c4c4" size={35} className=" max-lg:hidden"  onClick={"previousTrack"}/>
                     <RiRepeat2Line color="c4c4c4" size={30} className=" max-lg:hidden"/>
                 </div>
-                <div className="bot">
+                <div className="bot max-lg:w-[60%]">
                     {/* <audio src={currentTrack.track?.preview_url}  controls className="max-lg:absolute max-lg:bottom-0 left-0 max-lg:w-full max-lg:h-4"/> */}
                     <audio
                         ref={audioRef}
@@ -106,7 +106,7 @@ const Player = () => {
                     />
 
                     <div className="mt-4 flex justify-between items-center gap-8 text-white">
-                        <span>{formatTime(currentTime)}</span>
+                        <span className="max-lg:hidden">{formatTime(currentTime)}</span>
                         <input
                             type="range"
                             ref={progressRef}
@@ -115,9 +115,9 @@ const Player = () => {
                             style={{
                                 background: `linear-gradient(to right, #63CF6C ${(currentTime / duration) * 100}%, #fff 0%)`
                             }}
-                            className="w-[500px] h-[5px] bg-gray-400 rounded-lg appearance-none"
+                            className="w-[500px] h-[5px] bg-gray-400 rounded-lg appearance-none max-lg:w-[100%]"
                         />
-                        <span>{formatTime(duration)}</span>
+                        <span className="max-lg:hidden">{formatTime(duration)}</span>
                     </div>
                 </div>
             </div>

@@ -66,13 +66,13 @@ const Search = () => {
 
   return (
     <>
-      	<div className="m-auto mb-[100px] rounded-xl mt-[80px] min-h-screen text-white p-[40px] w-[60%] bg-gradient-to-b from-[#444444] to-[#121212] ">
+      	<div className="m-auto mb-[100px] rounded-xl mt-[80px] min-h-screen text-white p-[40px] w-[60%] bg-gradient-to-b from-[#444444] to-[#121212] max-2xl:w-[80%] max-2xl:ml-[30%] max-md:w-full max-md:ml-0 max-lg:p-2">
 				{searchText ? (
 					<SearchResult tracks={tracks} />
 				) : (
 					<RecentSearches />
 				)}
-			<section className=" flex gap-7 flex-wrap">
+			<section className=" flex gap-7 flex-wrap max-lg:gap-4 max-sm:gap-2">
 				{
 					data.map(item => <GenreBlock genre={item} key={item.id} />)
 				}

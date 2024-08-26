@@ -74,7 +74,7 @@ function AllPlaylists() {
 					myPlaylists?.playlists?.items?.map(item => <PlaylistCard key={item.id} item={item} />)
 					
 				}
-			</div>``
+			</div>
 			</div>
 		</>
 	);
